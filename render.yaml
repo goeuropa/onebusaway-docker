@@ -10,27 +10,6 @@ services:
     healthCheckPath: /api/where/current-time.json?key=org.onebusaway.iphone
     autoDeploy: true
     envVars:
-      - key: TZ
-        sync: true
-      - key: GTFS_URL
-        sync: true
-      - key: VEHICLE_POSITIONS_URL
-        sync: true
-      - key: TRIP_UPDATES_URL
-        sync: true
-      - key: ALERTS_URL
-        sync: false
-      - key: FEED_API_KEY
-        sync: false
-      - key: FEED_API_VALUE
-        sync: false
+      - fromGroup: OBA
       - key: REFRESH_INTERVAL
         value: 30
-      - key: AGENCY_ID
-        sync: false
-      - key: JDBC_USER
-        sync: true
-      - key: JDBC_PASSWORD
-        sync: true
-      - key: JDBC_URL
-        value: jdbc:postgresql://goeuropa.net:5430/oba_database
