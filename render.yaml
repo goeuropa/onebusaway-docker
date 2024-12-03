@@ -7,7 +7,6 @@ services:
     region: frankfurt
     plan: free
     numInstances: 1
-    healthCheckPath: /api/where/current-time.json?key=org.onebusaway.iphone
     autoDeploy: true
     envVars:
       - fromGroup: OBA
