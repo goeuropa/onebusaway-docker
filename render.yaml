@@ -3,21 +3,21 @@ services:
     name: OneBusAway API Server
     runtime: image
     image:
-      url: docker.io/opentransitsoftwarefoundation/onebusaway-api-webapp:2.5.13-otsf-v3.0.0
-    region: oregon
+      url: wkulesza/oba-standalone:pks
+    region: frankfurt
     plan: free
     numInstances: 1
     healthCheckPath: /api/where/current-time.json?key=org.onebusaway.iphone
     autoDeploy: true
     envVars:
       - key: TZ
-        sync: false
+        sync: true
       - key: GTFS_URL
-        sync: false
+        sync: true
       - key: VEHICLE_POSITIONS_URL
-        sync: false
+        sync: true
       - key: TRIP_UPDATES_URL
-        sync: false
+        sync: true
       - key: ALERTS_URL
         sync: false
       - key: FEED_API_KEY
@@ -29,27 +29,8 @@ services:
       - key: AGENCY_ID
         sync: false
       - key: JDBC_USER
-        fromDatabase:
-          name: oba-postgresql
-          property: user
+        sync: true
       - key: JDBC_PASSWORD
-        fromDatabase:
-          name: oba-postgresql
-          property: password
+        sync: true
       - key: JDBC_URL
-        fromDatabase:
-          name: oba-postgresql
-          property: connectionString
-      - key: JDBC_DRIVER
-        value: org.postgresql.Driver
-      - key: PORT
-        value: 8080
-    disk:
-      name: Bundle
-      mountPath: /bundle
-      sizeGB: 1
-
-databases:
-  - name: oba-postgresql
-    databaseName: obadb
-    plan: basic-256mb
+        value: jdbc:postgresql://goeuropa.net:5430/oba_database
